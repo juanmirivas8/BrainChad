@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connectionData>
+    <database>kbsa</database>
+    <user>admin</user>
+    <password>terces</password>
+    <server>jdbc:mysql://jrivvel0210.mooo.com:3306/</server>
+</connectionData>
