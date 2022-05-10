@@ -2,6 +2,7 @@ package es.iesfranciscodelosrios.model;
 
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import es.iesfranciscodelosrios.utils.SQL;
+import es.iesfranciscodelosrios.utils.Utils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,11 +12,13 @@ public abstract class DAOConnection {
     protected static Boolean online;
     public DAOConnection(){
         if(cn == null){
-            cn = SQL.getConnection("src/main/resources/es/iesfranciscodelosrios/others/sql.xml",null);
+            cn = SQL.getConnection("src/main/resources/es/iesfranciscodelosrios/others/sql.xml",
+                    Utils.getFileAsLinesWithScanner("src/main/resources/es/iesfranciscodelosrios/others/sql.sql"));
             online = true;
         }
         if(cn == null){
-            cn = SQL.getConnection("src/main/resources/es/iesfranciscodelosrios/others/h2.xml",null);
+            cn = SQL.getConnection("src/main/resources/es/iesfranciscodelosrios/others/h2.xml",
+                    Utils.getFileAsLinesWithScanner("src/main/resources/es/iesfranciscodelosrios/others/h2.sql"));
             online = false;
         }
         if(cn == null){

@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <bottom>
-      <HBox alignment="CENTER" spacing="40.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" text="Button">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="Button">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
-   </bottom>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.iesfranciscodelosrios.controllers.SignUpController">
+   <children>
+      <Button fx:id="btn_register" layoutX="363.0" layoutY="364.0" mnemonicParsing="false" text="Registrar" />
+      <Button fx:id="btn_atras" layoutX="375.0" layoutY="437.0" mnemonicParsing="false" text="Atrás" />
+      <DatePicker fx:id="date_born" layoutX="111.0" layoutY="180.0" prefHeight="26.0" prefWidth="229.0" />
+      <TextField fx:id="tf_nickname" layoutX="111.0" layoutY="101.0" prefHeight="26.0" prefWidth="229.0" promptText="Nombre de Usuario" />
+      <PasswordField fx:id="psw_original" layoutX="485.0" layoutY="101.0" prefHeight="26.0" prefWidth="229.0" promptText="Contraseña" />
+      <PasswordField fx:id="psw_repeat" layoutX="485.0" layoutY="180.0" prefHeight="26.0" prefWidth="229.0" promptText="Repetir Contraseña" />
+      <RadioButton fx:id="radio_hombre" layoutX="485.0" layoutY="271.0" mnemonicParsing="false" text="Hombre">
+         <toggleGroup>
+            <ToggleGroup fx:id="Sexo" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="radio_mujer" layoutX="653.0" layoutY="271.0" mnemonicParsing="false" text="Mujer" toggleGroup="$Sexo" />
+      <Label layoutX="194.0" layoutY="65.0" text="Nickname" />
+      <Label layoutX="162.0" layoutY="147.0" text="Fecha de nacimiento" />
+      <Label layoutX="564.0" layoutY="65.0" text="Contraseña" />
+      <Label layoutX="537.0" layoutY="147.0" text="Repetir Constraseña" />
+      <Label layoutX="168.0" layoutY="224.0" text="Nombre Completo" />
+      <TextField fx:id="tf_name" layoutX="111.0" layoutY="267.0" prefHeight="26.0" prefWidth="229.0" promptText="Nombre y Apellidos" />
+   </children>
+</AnchorPane>
