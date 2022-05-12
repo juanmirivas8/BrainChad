@@ -1,10 +1,13 @@
 package es.iesfranciscodelosrios.controllers;
 
+import es.iesfranciscodelosrios.model.Usuario;
 import es.iesfranciscodelosrios.utils.PopUps;
+import es.iesfranciscodelosrios.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class SignUpController extends Controller{
@@ -45,7 +48,7 @@ public class SignUpController extends Controller{
             String name = tf_name.getText();
             String ps_original = psw_original.getText();
             String ps_repeat = psw_repeat.getText();
-            LocalDate born_date = date_born.getValue();
+            Date born_date = (date_born.getValue()!=null)?(Date.valueOf(date_born.getValue())):(null);
             RadioButton selected = ((RadioButton)Sexo.getSelectedToggle());
 
             String errors = "";
@@ -70,6 +73,19 @@ public class SignUpController extends Controller{
             }
             if(!errors.equals("")){
                 PopUps.showPopUp("Error","Campos inválidos",errors, Alert.AlertType.ERROR);
+            }else{
+                Boolean gender = (selected.getText()=="Hombre");
+                ps_original = Utils.encryptSHA256(ps_original);
+                Usuario user = new Usuario(name,nickname,ps_original,born_date,gender,null,null,null,null);
+                Boolean res = users.insertNewUser(user);
+
+                if(!res){
+                    PopUps.showPopUp("Error en el registro","El usuario ya existe",
+                            "El nickname elegido ya existe", Alert.AlertType.ERROR);
+                }else{
+                    PopUps.showPopUp("Registro exitoso","Usuario creado correctamente",
+                            "Puede iniciar sesion con su nueva cuenta en la ventana de inicio", Alert.AlertType.CONFIRMATION);
+                }
             }
         });
     }
