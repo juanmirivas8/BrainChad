@@ -8,9 +8,9 @@ import java.util.List;
  * @author Juan Miguel Rivas Velasco
  */
 public class SQL {
-    private static SQL instance;
-    private static Connection cn;
-    private static ConnectionData info;
+    public static SQL instance;
+    public static Connection cn;
+    public static ConnectionData info;
 
     /**
      * Constructor por defecto privado ya que la clase no se va a instanciar

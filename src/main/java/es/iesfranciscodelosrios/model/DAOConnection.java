@@ -8,8 +8,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public abstract class DAOConnection {
-    protected static Connection cn;
-    protected static Boolean online;
+    public static Connection cn;
+    public static Boolean online;
     public DAOConnection(){
         if(cn == null){
             cn = SQL.getConnection("src/main/resources/es/iesfranciscodelosrios/others/sql.xml",
@@ -40,10 +40,5 @@ public abstract class DAOConnection {
         }
         return ret;
     }
-
-    public static Boolean getType(){
-        return online;
-    }
-    public static Connection getConnection(){return cn;}
 
 }

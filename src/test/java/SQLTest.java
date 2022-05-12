@@ -21,6 +21,9 @@ class SQLTest {
         assertDoesNotThrow(()->{
             Connection cn = SQL.getConnection("src/main/resources/es/iesfranciscodelosrios/others/sql.xml",null);
             assertNull(cn);
+            assertNull(SQL.cn);
+            assertNull(SQL.info);
+            assertNull(SQL.instance);
         });
         SQL.disconnect();
     }
@@ -33,4 +36,7 @@ class SQLTest {
         });
         SQL.disconnect();
     }
+
+
+
 }
