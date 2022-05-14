@@ -1,0 +1,10 @@
+May 14, 2022 10:48:22 PM es.iesfranciscodelosrios.utils.ConnectionData load
+INFO: XML cargado correctamente - src/main/resources/es/iesfranciscodelosrios/others/sql.xml
+May 14, 2022 10:48:24 PM es.iesfranciscodelosrios.utils.SQL getConnection
+SEVERE: com.mysql.cj.jdbc.exceptions.CommunicationsException - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server. - No pudo conectarse a la BBDD
+May 14, 2022 10:48:24 PM es.iesfranciscodelosrios.utils.ConnectionData load
+INFO: XML cargado correctamente - src/main/resources/es/iesfranciscodelosrios/others/h2.xml
+May 14, 2022 10:48:24 PM es.iesfranciscodelosrios.utils.SQL getConnection
+INFO: Base cargada correctamente src/main/resources/es/iesfranciscodelosrios/others/h2.xml

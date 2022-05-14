@@ -27,6 +27,7 @@ public class App extends Application {
         try {
             result = fxmlLoader.load();
         } catch (IOException e) {
+
             result = null;
         }
         return result;

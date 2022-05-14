@@ -1,16 +1,20 @@
 package es.iesfranciscodelosrios.model;
 
+import com.mysql.cj.log.Log;
 import es.iesfranciscodelosrios.utils.SQL;
+import es.iesfranciscodelosrios.utils.Utils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UsuarioDAO extends DAOConnection {
 
     private static UsuarioDAO instance;
-
+    private static final Logger Log = Utils.getLogger();
     private UsuarioDAO(){
         super();
     }
@@ -51,7 +55,7 @@ public class UsuarioDAO extends DAOConnection {
                         rs.getDouble("moneda"));
             }
         }catch (SQLException e){
-
+            Log.log(Level.SEVERE, Utils.exceptionInfo(e));
         }
         return null;
     }

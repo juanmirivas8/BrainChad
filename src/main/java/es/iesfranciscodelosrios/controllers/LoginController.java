@@ -1,8 +1,6 @@
 package es.iesfranciscodelosrios.controllers;
 
 import es.iesfranciscodelosrios.model.Usuario;
-import es.iesfranciscodelosrios.model.UsuarioDAO;
-import es.iesfranciscodelosrios.utils.PopUps;
 import es.iesfranciscodelosrios.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -36,16 +34,16 @@ public class LoginController extends Controller{
             tf_password.setText("");
 
             if(nickname.equals("") || password.equals("")){
-                PopUps.showPopUp("Inicio de Sesión","Campos vacios",
+                Utils.showPopUp("Inicio de Sesión","Campos vacios",
                         "Por favor introduzca el usuario y/o la contraseña",Alert.AlertType.ERROR);
             }else{
                 Usuario user = users.identify(nickname, Utils.encryptSHA256(password));
 
                 if(user == null){
-                    PopUps.showPopUp("Autenticacion fallida","Credenciales invalidas",
+                    Utils.showPopUp("Autenticacion fallida","Credenciales invalidas",
                             "El usuario y/o la contraseña son incorrectas",Alert.AlertType.ERROR);
                 }else{
-                    PopUps.showPopUp("Autenticacion correcta","Credenciales validas",
+                    Utils.showPopUp("Autenticacion correcta","Credenciales validas",
                             user.toString(),Alert.AlertType.CONFIRMATION);
                 }
             }

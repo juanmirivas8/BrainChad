@@ -1,15 +1,17 @@
 package es.iesfranciscodelosrios.model;
 
-import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import es.iesfranciscodelosrios.utils.SQL;
 import es.iesfranciscodelosrios.utils.Utils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public abstract class DAOConnection {
     public static Connection cn;
     public static Boolean online;
+    protected static final Logger Log = Utils.getLogger();
     public DAOConnection(){
         if(cn == null){
             cn = SQL.getConnection("src/main/resources/es/iesfranciscodelosrios/others/sql.xml",
@@ -23,6 +25,7 @@ public abstract class DAOConnection {
         }
         if(cn == null){
             online = null;
+            Log.log(Level.SEVERE,"Error Critico - no se cargo ninguna base de datos");
         }
     }
 
@@ -36,7 +39,7 @@ public abstract class DAOConnection {
                 ret = true;
             }
         } catch (SQLException e) {
-
+            Log.log(Level.SEVERE,Utils.exceptionInfo(e));
         }
         return ret;
     }
