@@ -1,14 +1,13 @@
 package es.iesfranciscodelosrios.controllers;
 
 import es.iesfranciscodelosrios.model.Usuario;
-import es.iesfranciscodelosrios.utils.PopUps;
 import es.iesfranciscodelosrios.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.sql.Date;
-import java.time.LocalDate;
+import java.util.logging.Level;
 
 public class SignUpController extends Controller{
     public SignUpController(){
@@ -49,7 +48,6 @@ public class SignUpController extends Controller{
             String ps_original = psw_original.getText();
             String ps_repeat = psw_repeat.getText();
             Date born_date = (date_born.getValue()!=null)?(Date.valueOf(date_born.getValue())):(null);
-            RadioButton selected = ((RadioButton)Sexo.getSelectedToggle());
 
             String errors = "";
 
@@ -65,25 +63,26 @@ public class SignUpController extends Controller{
             if(ps_repeat.equals("")||!ps_repeat.equals(ps_original)){
                 errors+="La confirmación de contraseña está vacía o no coincide con la introducida\n\n";
             }
-            if (selected == null){
+            if (!radio_hombre.isSelected() && !radio_mujer.isSelected()){
                 errors+="No ha seleccionado un sexo\n\n";
             }
             if(born_date == null){
                 errors+="No ha seleccionado su fecha de nacimiento\n\n";
             }
             if(!errors.equals("")){
-                PopUps.showPopUp("Error","Campos inválidos",errors, Alert.AlertType.ERROR);
+                Utils.showPopUp("Error","Campos inválidos",errors, Alert.AlertType.ERROR);
             }else{
-                Boolean gender = (selected.getText()=="Hombre");
+                Boolean gender = radio_hombre.isSelected();
                 ps_original = Utils.encryptSHA256(ps_original);
                 Usuario user = new Usuario(name,nickname,ps_original,born_date,gender,null,null,null,null);
+                Log.log(Level.INFO,"Usuario leido: "+user);
                 Boolean res = users.insertNewUser(user);
 
                 if(!res){
-                    PopUps.showPopUp("Error en el registro","El usuario ya existe",
+                    Utils.showPopUp("Error en el registro","El usuario ya existe",
                             "El nickname elegido ya existe", Alert.AlertType.ERROR);
                 }else{
-                    PopUps.showPopUp("Registro exitoso","Usuario creado correctamente",
+                    Utils.showPopUp("Registro exitoso","Usuario creado correctamente",
                             "Puede iniciar sesion con su nueva cuenta en la ventana de inicio", Alert.AlertType.CONFIRMATION);
                 }
             }

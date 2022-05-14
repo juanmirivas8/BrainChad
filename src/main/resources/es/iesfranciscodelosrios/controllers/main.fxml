@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Sesión">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Editar Perfil" />
+                  <MenuItem mnemonicParsing="false" text="Cerrar Sesion" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Partida">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Nueva Partida" />
+                  <MenuItem mnemonicParsing="false" text="Reto online" />
+                  <MenuItem mnemonicParsing="false" text="Reto offline" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Modo Creativo">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Crear Pregunta" />
+                  <MenuItem mnemonicParsing="false" text="Crear Test" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Social">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

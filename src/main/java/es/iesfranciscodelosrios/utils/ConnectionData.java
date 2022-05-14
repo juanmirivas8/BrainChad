@@ -8,6 +8,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Clase que carga la información de la base de datos desde un xml usando JAXB
@@ -15,6 +17,7 @@ import java.io.File;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ConnectionData {
+    private static final Logger Log= Utils.getLogger();
     private String database;
     private String user;
     private String password;
@@ -73,8 +76,9 @@ public class ConnectionData {
             this.server = aux.server;
             this.user = aux.user;
             this.password = aux.password;
+            Log.log(Level.INFO,"XML cargado correctamente - "+ url);
         } catch (JAXBException e) {
-            e.printStackTrace();
+            Log.log(Level.SEVERE,Utils.exceptionInfo(e));
         }
     }
 }

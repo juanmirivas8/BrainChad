@@ -2,6 +2,8 @@ package es.iesfranciscodelosrios.utils;
 
 import java.sql.*;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Clase que genera una conexión a una base de datos SQL, dado el servidor, un usuario y la contraseña.
@@ -11,6 +13,7 @@ public class SQL {
     public static SQL instance;
     public static Connection cn;
     public static ConnectionData info;
+    private static final Logger Log= Utils.getLogger();
 
     /**
      * Constructor por defecto privado ya que la clase no se va a instanciar
@@ -43,10 +46,12 @@ public class SQL {
                 DriverManager.setLoginTimeout(2);
                 cn = DriverManager.getConnection(info.getServer()+info.getDatabase(),info.getUser(), info.getPassword());
                 checkStructure(dbCreation);
+                Log.log(Level.INFO,"Base cargada correctamente "+ url);
             } catch (SQLException e) {
                 cn = null;
                 info = null;
                 instance = null;
+                Log.log(Level.SEVERE,Utils.exceptionInfo(e)+" - No pudo conectarse a la BBDD");
             }
         }
         return cn;
@@ -73,7 +78,7 @@ public class SQL {
                 info = null;
                 instance = null;
             } catch (SQLException e) {
-
+                Log.log(Level.SEVERE,Utils.exceptionInfo(e));
             }
         }
     }
@@ -91,7 +96,7 @@ public class SQL {
             try {
                 ps = cn.prepareStatement(q, Statement.RETURN_GENERATED_KEYS);
             } catch (SQLException e) {
-
+                Log.log(Level.SEVERE,Utils.exceptionInfo(e));
             }
 
             if (params != null && ps != null) {
@@ -100,7 +105,7 @@ public class SQL {
                     try {
                         ps.setObject(i++, o);
                     } catch (SQLException e) {
-
+                        Log.log(Level.SEVERE,Utils.exceptionInfo(e));
                     }
                 }
             }
@@ -124,6 +129,7 @@ public class SQL {
                 result = ps.executeQuery();
             } catch (SQLException e) {
                 result = null;
+                Log.log(Level.SEVERE,Utils.exceptionInfo(e));
             }
         } else {
             result = null;
@@ -151,11 +157,12 @@ public class SQL {
                         else
                             result = -1;
                     } catch (SQLException e) {
-
+                        Log.log(Level.SEVERE,Utils.exceptionInfo(e));
                     }
                 }
             } catch (SQLException e) {
                 result = -1;
+                Log.log(Level.SEVERE,Utils.exceptionInfo(e));
             }
         } else {
             result = -1;

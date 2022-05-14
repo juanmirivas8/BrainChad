@@ -25,4 +25,11 @@ class UtilsTest {
             UsuarioDAO.close();
         });
     }
+    @Test
+    void testSHA256(){
+        assertDoesNotThrow(()->{
+            assertEquals(Utils.encryptSHA256("terces"),"04d3368f72736ed54c3cb63454eef23c2ecfb1deed27e2a4aa8e442e898fdbf5");
+        });
+    }
+
 }
