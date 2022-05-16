@@ -26,8 +26,8 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         try {
             result = fxmlLoader.load();
-        } catch (IOException e) {
 
+        } catch (IOException e) {
             result = null;
         }
         return result;
@@ -63,6 +63,7 @@ public class App extends Application {
     public static void main(String[] args) {
         launch(args);
         SQL.disconnect();
+
 
     }
 }

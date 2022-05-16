@@ -1,0 +1,14 @@
+May 16, 2022 2:26:05 PM es.iesfranciscodelosrios.utils.ConnectionData load
+INFO: XML cargado correctamente - /es/iesfranciscodelosrios/others/sql.xml
+May 16, 2022 2:26:08 PM es.iesfranciscodelosrios.utils.SQL getConnection
+SEVERE: com.mysql.cj.jdbc.exceptions.CommunicationsException - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server. - No pudo conectarse a la BBDD
+May 16, 2022 2:26:08 PM es.iesfranciscodelosrios.utils.ConnectionData load
+INFO: XML cargado correctamente - /es/iesfranciscodelosrios/others/h2.xml
+May 16, 2022 2:26:08 PM es.iesfranciscodelosrios.utils.SQL getConnection
+SEVERE: org.h2.jdbc.JdbcSQLNonTransientConnectionException - A file path that is implicitly relative to the current working directory is not allowed in the database URL "jdbc:h2:Brainchad". Use an absolute path, ~/name, ./name, or the baseDir setting instead. [90011-200] - No pudo conectarse a la BBDD
+May 16, 2022 2:26:08 PM es.iesfranciscodelosrios.model.DAOConnection <init>
+SEVERE: Error Critico - no se cargo ninguna base de datos
+May 16, 2022 2:26:08 PM es.iesfranciscodelosrios.controllers.LoginController <init>
+INFO: LoginController cargado

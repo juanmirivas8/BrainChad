@@ -77,6 +77,7 @@ public class SQL {
                 cn = null;
                 info = null;
                 instance = null;
+                Log.log(Level.INFO,"Base cerrada correctamente");
             } catch (SQLException e) {
                 Log.log(Level.SEVERE,Utils.exceptionInfo(e));
             }

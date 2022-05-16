@@ -71,7 +71,7 @@ public class ConnectionData {
         try {
             JAXBContext context = JAXBContext.newInstance(ConnectionData.class);
             Unmarshaller um = context.createUnmarshaller();
-            aux = (ConnectionData) um.unmarshal(new File(url));
+            aux = (ConnectionData) um.unmarshal(ConnectionData.class.getResourceAsStream(url));
             this.database = aux.database;
             this.server = aux.server;
             this.user = aux.user;
