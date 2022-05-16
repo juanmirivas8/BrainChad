@@ -3,5 +3,5 @@
     <database>Brainchad</database>
     <user>sa</user>
     <password>1234</password>
-    <server>jdbc:h2:../</server>
+    <server>jdbc:h2:./</server>
 </connectionData>

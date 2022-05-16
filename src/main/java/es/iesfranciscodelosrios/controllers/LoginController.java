@@ -2,17 +2,24 @@ package es.iesfranciscodelosrios.controllers;
 
 import es.iesfranciscodelosrios.model.Usuario;
 import es.iesfranciscodelosrios.utils.Utils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import java.util.logging.Level;
 
 public class LoginController extends Controller{
     public LoginController(){
         super();
+        Log.log(Level.INFO,"LoginController cargado");
+
     }
+
+
+    @FXML
+    private BorderPane pane;
+
     @FXML
     private Button btn_login;
 
@@ -43,8 +50,9 @@ public class LoginController extends Controller{
                     Utils.showPopUp("Autenticacion fallida","Credenciales invalidas",
                             "El usuario y/o la contraseña son incorrectas",Alert.AlertType.ERROR);
                 }else{
-                    Utils.showPopUp("Autenticacion correcta","Credenciales validas",
-                            user.toString(),Alert.AlertType.CONFIRMATION);
+                    objects.add(user);
+                    App.loadScene(new Stage(),"main","BrainChad",false,false);
+                    App.closeScene((Stage) btn_login.getScene().getWindow());
                 }
             }
         });
@@ -52,6 +60,10 @@ public class LoginController extends Controller{
         link_register_here.setOnAction(actionEvent -> {
             App.loadScene(new Stage(),"signUp","Registra una nueva cuenta",false,false);
             App.closeScene((Stage) link_register_here.getScene().getWindow());
+        });
+
+        Platform.runLater(()->{
+            Utils.closeRequest((Stage) pane.getScene().getWindow());
         });
 
     }

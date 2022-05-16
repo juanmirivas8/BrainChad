@@ -12,6 +12,7 @@ import java.util.logging.Level;
 public class SignUpController extends Controller{
     public SignUpController(){
         super();
+        Log.log(Level.INFO,"SignUp cargado");
     }
 
     @FXML
@@ -77,13 +78,14 @@ public class SignUpController extends Controller{
                 Usuario user = new Usuario(name,nickname,ps_original,born_date,gender,null,null,null,null);
                 Log.log(Level.INFO,"Usuario leido: "+user);
                 Boolean res = users.insertNewUser(user);
-
+                user = users.find(user.getNickname());
+                Log.log(Level.INFO,"Usuario una vez cargado: "+user);
                 if(!res){
                     Utils.showPopUp("Error en el registro","El usuario ya existe",
                             "El nickname elegido ya existe", Alert.AlertType.ERROR);
                 }else{
                     Utils.showPopUp("Registro exitoso","Usuario creado correctamente",
-                            "Puede iniciar sesion con su nueva cuenta en la ventana de inicio", Alert.AlertType.CONFIRMATION);
+                            "Puede iniciar sesion con su nueva cuenta en la ventana de inicio", Alert.AlertType.INFORMATION);
                 }
             }
         });

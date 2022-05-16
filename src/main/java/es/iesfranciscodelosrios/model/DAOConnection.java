@@ -14,13 +14,13 @@ public abstract class DAOConnection {
     protected static final Logger Log = Utils.getLogger();
     public DAOConnection(){
         if(cn == null){
-            cn = SQL.getConnection("src/main/resources/es/iesfranciscodelosrios/others/sql.xml",
-                    Utils.getFileAsLinesWithScanner("src/main/resources/es/iesfranciscodelosrios/others/sql.sql"));
+            cn = SQL.getConnection("/es/iesfranciscodelosrios/others/sql.xml",
+                    Utils.getFileAsLinesWithScanner("/es/iesfranciscodelosrios/others/sql.sql"));
             online = true;
         }
         if(cn == null){
-            cn = SQL.getConnection("src/main/resources/es/iesfranciscodelosrios/others/h2.xml",
-                    Utils.getFileAsLinesWithScanner("src/main/resources/es/iesfranciscodelosrios/others/h2.sql"));
+            cn = SQL.getConnection("/es/iesfranciscodelosrios/others/h2.xml",
+                    Utils.getFileAsLinesWithScanner("/es/iesfranciscodelosrios/others/h2.sql"));
             online = false;
         }
         if(cn == null){

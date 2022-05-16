@@ -1,6 +1,8 @@
 package es.iesfranciscodelosrios.utils;
 
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -48,16 +50,15 @@ public class Utils {
      */
     public static List<String> getFileAsLines(String url){
         try {
-            File f = new File(url);
-            FileReader fr = new FileReader(f);
-            BufferedReader br = new BufferedReader(fr);
+            InputStreamReader in = new InputStreamReader(Utils.class.getResourceAsStream(url));
+            BufferedReader br = new BufferedReader(in);
             String line;
             List<String> lines = new ArrayList<>();
             while ((line = br.readLine()) != null){
                 lines.add(line);
             }
             br.close();
-            fr.close();
+            in.close();
             return lines;
         } catch (Exception e) {
             Log.log(Level.SEVERE,Utils.exceptionInfo(e));
@@ -72,7 +73,7 @@ public class Utils {
      */
     public static List<String> getFileAsLinesWithScanner(String url){
         try {
-            Scanner sc = new Scanner(new File(url));
+            Scanner sc = new Scanner(Utils.class.getResourceAsStream(url));
             sc.useDelimiter(";");
             List<String> l = new ArrayList<>();
             while (sc.hasNext()){
@@ -92,7 +93,7 @@ public class Utils {
      * @param text Texto de contexto
      * @param type Tipo de ventana
      */
-    public static void showPopUp(String title, String header, String text, Alert.AlertType type){
+    public static Alert showPopUp(String title, String header, String text, Alert.AlertType type){
         Alert alertDialog = new Alert(type);
         alertDialog.setTitle(title);
         alertDialog.setHeaderText(header);
@@ -100,6 +101,7 @@ public class Utils {
         alertDialog.show();
         Stage s =(Stage)alertDialog.getDialogPane().getScene().getWindow();
         s.toFront();
+        return alertDialog;
     }
 
     /**
@@ -121,5 +123,18 @@ public class Utils {
 
     public static String exceptionInfo(Throwable e){
         return e.getClass().getName()+" - "+e.getMessage();
+    }
+
+    public static void closeRequest(Stage stage){
+           stage.setOnCloseRequest(windowEvent -> {
+                Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+                a.setTitle("Confirmacion de cierre");
+                a.setHeaderText("¿Esta seguro de salir del programa?");
+                a.setContentText("Cualquier informacion o proceso sin guardar/terminar se perderá");
+               Stage s =(Stage)a.getDialogPane().getScene().getWindow();
+               s.initOwner(stage);
+               s.toFront();
+                a.showAndWait().filter(buttonType -> buttonType== ButtonType.OK).ifPresentOrElse(buttonType -> Platform.exit(),windowEvent::consume);
+           });
     }
 }
