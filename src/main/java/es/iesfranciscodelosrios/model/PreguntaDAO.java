@@ -34,7 +34,7 @@ public class PreguntaDAO extends DAOConnection{
     }
 
     public Boolean insert (Pregunta p){
-        String query = "INSERT INTO Pregunta(userID, titulo, respCorrecta,respInc1, respInc2, respInc3, categoria) VALUE (?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Pregunta(userID, titulo, respCorrecta,respInc1, respInc2, respInc3, categoria) VALUES (?,?,?,?,?,?,?)";
         List<Object> l = new ArrayList<>();
         l.add(p.getUserId());
         l.add(p.getTitulo());

@@ -1,12 +1,16 @@
-May 18, 2022 7:38:36 PM es.iesfranciscodelosrios.utils.ConnectionData load
+May 18, 2022 8:02:53 PM es.iesfranciscodelosrios.utils.ConnectionData load
 INFO: XML cargado correctamente - /es/iesfranciscodelosrios/others/sql.xml
-May 18, 2022 7:38:39 PM es.iesfranciscodelosrios.utils.SQL getConnection
+May 18, 2022 8:02:55 PM es.iesfranciscodelosrios.utils.SQL getConnection
 INFO: Base cargada correctamente /es/iesfranciscodelosrios/others/sql.xml
-May 18, 2022 7:38:39 PM es.iesfranciscodelosrios.controllers.LoginController <init>
+May 18, 2022 8:02:55 PM es.iesfranciscodelosrios.controllers.LoginController <init>
 INFO: LoginController cargado
-May 18, 2022 7:38:47 PM es.iesfranciscodelosrios.controllers.LoginController lambda$initialize$0
-INFO: Usuario: Usuario{nombre='a', nickname='a', password='ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb', bornDate=2022-05-05, sexo=true, id=1, register_date=2022-05-18T00:00, puntuacion=0.0, moneda=0.0, preguntas=[Pregunta{id=1, userId=1, titulo='asd', rCorrecta='fdg', rIn_1='dfg', rIn_2='dfgg', rIn_3='bn', categoria='sdf', fecha_creacion=2022-05-18T00:00}]}
-May 18, 2022 7:38:47 PM es.iesfranciscodelosrios.controllers.MainController <init>
-INFO: MainController cargado
-May 18, 2022 7:40:04 PM es.iesfranciscodelosrios.utils.SQL disconnect
+May 18, 2022 8:02:57 PM es.iesfranciscodelosrios.controllers.SignUpController <init>
+INFO: SignUp cargado
+May 18, 2022 8:03:06 PM es.iesfranciscodelosrios.controllers.SignUpController lambda$initialize$1
+INFO: Usuario leido: Usuario{nombre='a', nickname='a', password='ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb', bornDate=2022-05-05, sexo=true, id=null, register_date=null, puntuacion=null, moneda=null, preguntas=null}
+May 18, 2022 8:03:07 PM es.iesfranciscodelosrios.controllers.SignUpController lambda$initialize$1
+INFO: Usuario una vez cargado: Usuario{nombre='a', nickname='a', password='ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb', bornDate=2022-05-05, sexo=true, id=1, register_date=2022-05-18T18:03:06, puntuacion=0.0, moneda=0.0, preguntas=[]}
+May 18, 2022 8:03:10 PM es.iesfranciscodelosrios.controllers.LoginController <init>
+INFO: LoginController cargado
+May 18, 2022 8:04:33 PM es.iesfranciscodelosrios.utils.SQL disconnect
 INFO: Base cerrada correctamente
