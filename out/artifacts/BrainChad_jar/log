@@ -1,0 +1,16 @@
+May 19, 2022 1:58:05 AM es.iesfranciscodelosrios.utils.ConnectionData load
+INFO: XML cargado correctamente - /es/iesfranciscodelosrios/others/sql.xml
+May 19, 2022 1:58:05 AM es.iesfranciscodelosrios.utils.SQL getConnection
+SEVERE: java.sql.SQLException - No suitable driver found for jdbc:mysql://jrivvel0210.mooo.com:3306/Brainchad - No pudo conectarse a la BBDD
+May 19, 2022 1:58:05 AM es.iesfranciscodelosrios.utils.ConnectionData load
+INFO: XML cargado correctamente - /es/iesfranciscodelosrios/others/h2.xml
+May 19, 2022 1:58:05 AM es.iesfranciscodelosrios.utils.SQL getConnection
+INFO: Base cargada correctamente /es/iesfranciscodelosrios/others/h2.xml
+May 19, 2022 1:58:05 AM es.iesfranciscodelosrios.controllers.LoginController <init>
+INFO: LoginController cargado
+May 19, 2022 1:58:14 AM es.iesfranciscodelosrios.controllers.LoginController lambda$initialize$0
+INFO: Usuario: Usuario{nombre='Juan Rivas', nickname='jrivvel0210', password='04d3368f72736ed54c3cb63454eef23c2ecfb1deed27e2a4aa8e442e898fdbf5', bornDate=1997-05-02, sexo=true, id=3, register_date=2022-05-18T22:16:40.413529, puntuacion=0.0, moneda=0.0, preguntas=[Pregunta{id=3, userId=3, titulo='Ciudad soberana con mayor densidad del mundo', rCorrecta='Mónaco', rIn_1='Singapur', rIn_2='Ciudad del Vaticano', rIn_3='Tokio', categoria='Geografía', fecha_creacion=2022-05-18T22:20:48.824027}, Pregunta{id=4, userId=3, titulo='Unico miembro del casting del Señor de los Anillos que conocio a J.R.R Tolkien', rCorrecta='Christopher Lee', rIn_1='Ian McKellen', rIn_2='Vigo Mortessen', rIn_3='Ian Holm', categoria='Cultura', fecha_creacion=2022-05-18T22:27:14.195100}, Pregunta{id=5, userId=3, titulo='Animal que aparece en el juego de Chrome cuando pierdes la conexión', rCorrecta='Dinosaurio', rIn_1='Tigre', rIn_2='Ballena', rIn_3='Mapache', categoria='Ciencia', fecha_creacion=2022-05-18T22:31:03.629648}, Pregunta{id=6, userId=3, titulo='Unidad más pequeña de la materia que aún conserva sus propiedades elementales', rCorrecta='Átomo', rIn_1='Molécula', rIn_2='Célula', rIn_3='Electrón', categoria='Ciencia', fecha_creacion=2022-05-18T22:33:47.481707}, Pregunta{id=7, userId=3, titulo='Tizona era la espada de ...', rCorrecta='El Cid Campeador', rIn_1='Rey Arturo', rIn_2='El Grán Capitán', rIn_3='William Wallace', categoria='Historia', fecha_creacion=2022-05-19T01:37:02.956129}, Pregunta{id=8, userId=3, titulo='El llamado Telefono Rojo conectaba qué dos países', rCorrecta='Estados Unidos y Rusia', rIn_1='Estados Unidos y China', rIn_2='Francia y El Reino Unido', rIn_3='Japón y Korea', categoria='Historia', fecha_creacion=2022-05-18T22:42:22.029513}]}
+May 19, 2022 1:58:14 AM es.iesfranciscodelosrios.controllers.MainController <init>
+INFO: MainController cargado
+May 19, 2022 1:58:21 AM es.iesfranciscodelosrios.utils.SQL disconnect
+INFO: Base cerrada correctamente
