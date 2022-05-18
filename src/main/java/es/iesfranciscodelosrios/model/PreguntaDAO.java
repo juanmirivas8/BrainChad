@@ -78,8 +78,25 @@ public class PreguntaDAO extends DAOConnection{
     }
 
     public Boolean remove(Integer id){
+        String query ="DELETE FROM Pregunta WHERE id =?";
+        List<Object> l = new ArrayList<>();
+        l.add(id);
+        return SQL.execUpdate(query,l,false)!= 0;
+    }
 
-        return false;
+    public Boolean update(Pregunta p){
+        String query = "UPDATE Pregunta SET Pregunta.userID = ? , Pregunta.categoria = ?, Pregunta.titulo = ?,Pregunta.respCorrecta = ?,Pregunta.respInc1 = ?, Pregunta.respInc2 = ?, Pregunta.respInc3 = ?, Pregunta.fecha_Creacion = ? WHERE Pregunta.id = ?";
+        List<Object> l = new ArrayList<>();
+        l.add(p.getUserId());
+        l.add(p.getCategoria());
+        l.add(p.getTitulo());
+        l.add(p.getrCorrecta());
+        l.add(p.getrIn_1());
+        l.add(p.getrIn_2());
+        l.add(p.getrIn_3());
+        l.add(p.getFecha_creacion());
+        l.add(p.getId());
+        return SQL.execUpdate(query,l,false) != 0;
     }
 
 }

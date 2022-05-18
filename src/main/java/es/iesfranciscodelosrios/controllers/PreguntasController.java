@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 
 public class PreguntasController extends Controller{
@@ -63,6 +64,15 @@ public class PreguntasController extends Controller{
                 }
             }
         });
+
+        pr.addListener((ListChangeListener<? super Pregunta>) delete->{
+            delete.next();
+            if(delete.wasRemoved()){
+                Pregunta p = delete.getRemoved().get(0);
+                Log.log(Level.INFO,p.toString());
+                preguntas.remove(p.getId());
+            }
+        });
         btn_eliminar.setOnAction(actionEvent ->{
            if( tb.getSelectionModel().getSelectedItem()!= null){
                Alert a = new Alert(Alert.AlertType.CONFIRMATION);
@@ -110,6 +120,8 @@ public class PreguntasController extends Controller{
                                 "Cambiar enunciado","Introduzca nuevo enunciado:", 350);
                         if(newTitle!=null&&!newTitle.equals("")){
                             p.setTitulo(newTitle);
+                            p.setFecha_creacion(LocalDateTime.now());
+                            preguntas.update(p);
                             tb.refresh();
                         }
                     }
@@ -133,7 +145,9 @@ public class PreguntasController extends Controller{
                         String newTitle = Utils.showDialogString((Stage) tb.getScene().getWindow(),"Modificar Pregunta",
                                 "Cambiar Categoria","Introduzca nueva categoria:", 20);
                         if(newTitle!=null&&!newTitle.equals("")){
-                            p.setTitulo(newTitle);
+                            p.setCategoria(newTitle);
+                            p.setFecha_creacion(LocalDateTime.now());
+                            preguntas.update(p);
                             tb.refresh();
                         }
                     }
@@ -157,7 +171,9 @@ public class PreguntasController extends Controller{
                         String newTitle = Utils.showDialogString((Stage) tb.getScene().getWindow(),"Modificar Pregunta",
                                 "Cambiar rerspuesta correcta","Introduzca nueva respuesta correcta:", 100);
                         if(newTitle!=null&&!newTitle.equals("")){
-                            p.setTitulo(newTitle);
+                            p.setrCorrecta(newTitle);
+                            p.setFecha_creacion(LocalDateTime.now());
+                            preguntas.update(p);
                             tb.refresh();
                         }
                     }
@@ -181,7 +197,9 @@ public class PreguntasController extends Controller{
                         String newTitle = Utils.showDialogString((Stage) tb.getScene().getWindow(),"Modificar Pregunta",
                                 "Cambiar rerspuesta incorrecta","Introduzca nueva respuesta incorrecta:", 100);
                         if(newTitle!=null&&!newTitle.equals("")){
-                            p.setTitulo(newTitle);
+                            p.setrIn_1(newTitle);
+                            p.setFecha_creacion(LocalDateTime.now());
+                            preguntas.update(p);
                             tb.refresh();
                         }
                     }
@@ -205,7 +223,9 @@ public class PreguntasController extends Controller{
                         String newTitle = Utils.showDialogString((Stage) tb.getScene().getWindow(),"Modificar Pregunta",
                                 "Cambiar rerspuesta incorrecta","Introduzca nueva respuesta incorrecta:", 100);
                         if(newTitle!=null&&!newTitle.equals("")){
-                            p.setTitulo(newTitle);
+                            p.setrIn_2(newTitle);
+                            p.setFecha_creacion(LocalDateTime.now());
+                            preguntas.update(p);
                             tb.refresh();
                         }
                     }
@@ -229,7 +249,9 @@ public class PreguntasController extends Controller{
                         String newTitle = Utils.showDialogString((Stage) tb.getScene().getWindow(),"Modificar Pregunta",
                                 "Cambiar rerspuesta incorrecta","Introduzca nueva respuesta incorrecta:", 100);
                         if(newTitle!=null&&!newTitle.equals("")){
-                            p.setTitulo(newTitle);
+                            p.setrIn_3(newTitle);
+                            p.setFecha_creacion(LocalDateTime.now());
+                            preguntas.update(p);
                             tb.refresh();
                         }
                     }

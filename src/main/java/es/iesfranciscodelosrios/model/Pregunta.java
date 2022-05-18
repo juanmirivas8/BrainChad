@@ -5,17 +5,17 @@ import java.time.LocalDateTime;
 
 public class Pregunta {
 
-    private Integer id;
-    private Integer userId;
-    private String titulo;
-    private String rCorrecta;
-    private String rIn_1;
-    private String rIn_2;
-    private String rIn_3;
-    private String imagen;
-    private String categoria;
-    private LocalDateTime fecha_creacion;
-    private Usuario owner;
+    protected Integer id;
+    protected Integer userId;
+    protected String titulo;
+    protected String rCorrecta;
+    protected String rIn_1;
+    protected String rIn_2;
+    protected String rIn_3;
+    protected String imagen;
+    protected String categoria;
+    protected LocalDateTime fecha_creacion;
+    protected Usuario owner;
 
     public Pregunta(Integer id, Integer userId, String titulo, String rCorrecta,
                     String rIn_1, String rIn_2, String rIn_3, String categoria) {
@@ -31,6 +31,20 @@ public class Pregunta {
 
     public Pregunta() {
 
+    }
+
+    public Pregunta(Pregunta pregunta) {
+        this.id = pregunta.id;
+        this.userId = pregunta.userId;
+        this.titulo = pregunta.titulo;
+        this.rCorrecta = pregunta.rCorrecta;
+        this.rIn_1 = pregunta.rIn_1;
+        this.rIn_2 = pregunta.rIn_2;
+        this.rIn_3 = pregunta.rIn_3;
+        this.categoria = pregunta.categoria;
+        this.fecha_creacion = pregunta.fecha_creacion;
+        this.owner = pregunta.owner;
+        this.imagen = pregunta.imagen;
     }
 
     public Integer getId() {
