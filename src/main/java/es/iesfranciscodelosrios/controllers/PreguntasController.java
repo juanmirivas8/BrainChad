@@ -5,6 +5,9 @@ import es.iesfranciscodelosrios.model.Pregunta;
 import es.iesfranciscodelosrios.model.Usuario;
 import es.iesfranciscodelosrios.utils.Utils;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -46,8 +49,20 @@ public class PreguntasController extends Controller{
 
     @FXML
     protected void initialize(){
+        ObservableList<Pregunta> pr = FXCollections.observableList(((Usuario)objects.get(0)).getPreguntas());
+        tb.setItems(pr);
         configureTable();
 
+        pr.addListener((ListChangeListener<? super Pregunta>) change -> {
+            change.next();
+            if(change.wasAdded()){
+                Pregunta p = change.getAddedSubList().get(0);
+                Boolean r = preguntas.insert(p);
+                if(!r){
+                    change.getAddedSubList().clear();
+                }
+            }
+        });
         btn_eliminar.setOnAction(actionEvent ->{
            if( tb.getSelectionModel().getSelectedItem()!= null){
                Alert a = new Alert(Alert.AlertType.CONFIRMATION);
@@ -222,7 +237,6 @@ public class PreguntasController extends Controller{
             });
             return cell;
         });
-
     }
 
     private Pregunta leerPregunta(){

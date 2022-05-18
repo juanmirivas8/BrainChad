@@ -9,9 +9,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public abstract class DAOConnection {
-    public static Connection cn;
-    public static Boolean online;
+    protected static Connection cn;
+    protected static Boolean online;
     protected static final Logger Log = Utils.getLogger();
+    protected static UsuarioDAO users;
+    protected static PreguntaDAO preguntas;
+
     public DAOConnection(){
         if(cn == null){
             cn = SQL.getConnection("/es/iesfranciscodelosrios/others/sql.xml",

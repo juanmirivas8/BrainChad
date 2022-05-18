@@ -1,6 +1,8 @@
 package es.iesfranciscodelosrios.model;
 
-import java.sql.Date;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class Usuario {
@@ -10,14 +12,14 @@ public class Usuario {
     private Date bornDate;
     private Boolean sexo;
     private Integer id;
-    private Date register_date;
+    private LocalDateTime register_date;
     private Double puntuacion;
     private Double moneda;
-    public List<Pregunta> preguntas;
+    private List<Pregunta> preguntas;
 
 
     public Usuario(String nombre, String nickname, String password, Date bornDate, Boolean sexo,
-                   Integer id, Date register_date, Double puntuacion, Double moneda) {
+                   Integer id, LocalDateTime register_date, Double puntuacion, Double moneda) {
         this.nombre = nombre;
         this.nickname = nickname;
         this.password = password;
@@ -77,11 +79,11 @@ public class Usuario {
         this.id = id;
     }
 
-    public Date getRegister_date() {
+    public LocalDateTime getRegister_date() {
         return register_date;
     }
 
-    public void setRegister_date(Date register_date) {
+    public void setRegister_date(LocalDateTime register_date) {
         this.register_date = register_date;
     }
 
@@ -101,17 +103,27 @@ public class Usuario {
         this.moneda = moneda;
     }
 
+    public List<Pregunta> getPreguntas() {
+        return preguntas;
+    }
+
+    public void setPreguntas(List<Pregunta> preguntas) {
+        this.preguntas = preguntas;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
                 "nombre='" + nombre + '\'' +
                 ", nickname='" + nickname + '\'' +
+                ", password='" + password + '\'' +
                 ", bornDate=" + bornDate +
                 ", sexo=" + sexo +
                 ", id=" + id +
                 ", register_date=" + register_date +
                 ", puntuacion=" + puntuacion +
                 ", moneda=" + moneda +
+                ", preguntas=" + preguntas +
                 '}';
     }
 }
