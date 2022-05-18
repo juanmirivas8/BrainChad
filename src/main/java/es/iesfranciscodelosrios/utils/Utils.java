@@ -3,12 +3,15 @@ package es.iesfranciscodelosrios.utils;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
@@ -104,6 +107,19 @@ public class Utils {
         return alertDialog;
     }
 
+    public static String showDialogString(Stage stage, String title, String header, String description, int max_characters){
+        TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle(title);
+        dialog.setHeaderText(header);
+        dialog.setContentText(description);
+        Stage s =(Stage)dialog.getDialogPane().getScene().getWindow();
+        s.initOwner(stage);
+        s.toFront();
+        Utils.addTextLimiter(dialog.getEditor(),max_characters);
+        Optional<String> result = dialog.showAndWait();
+        return result.orElse(null);
+    }
+
     /**
      * Inicializa el logger de java util con la configuracion del fichero logging.properties
      * @return Logger inicializado o null si hubo un fallo
@@ -136,5 +152,14 @@ public class Utils {
                s.toFront();
                 a.showAndWait().filter(buttonType -> buttonType== ButtonType.OK).ifPresentOrElse(buttonType -> Platform.exit(),windowEvent::consume);
            });
+    }
+
+    public static void addTextLimiter(final TextField tf, final int maxLength) {
+        tf.textProperty().addListener((ov, oldValue, newValue) -> {
+            if (tf.getText().length() > maxLength) {
+                String s = tf.getText().substring(0, maxLength);
+                tf.setText(s);
+            }
+        });
     }
 }

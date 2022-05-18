@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="1015.0" xmlns="http://javafx.com/javafx/16" fx:controller="es.iesfranciscodelosrios.controllers.PreguntasController" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="627.7503472092544" minWidth="10.0" prefWidth="507.06827933816066" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="507.3802031857265" minWidth="10.0" prefWidth="507.3802031857265" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="506.6651109060567" minHeight="10.0" prefHeight="491.7045396169942" vgrow="SOMETIMES" />
+    <RowConstraints fillHeight="false" maxHeight="189.8581158320174" minHeight="0.0" prefHeight="36.155029296875" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <TableView fx:id="tb" prefHeight="492.0" prefWidth="968.0" GridPane.columnSpan="2">
+        <columns>
+          <TableColumn fx:id="tc_title" prefWidth="241.36407899856567" text="Titulo" />
+          <TableColumn fx:id="tc_category" minWidth="0.0" prefWidth="140.6295166015625" text="Categoria" />
+            <TableColumn fx:id="tc_correctAnswer" minWidth="0.0" prefWidth="152.597900390625" text="Respuesta Correcta" />
+            <TableColumn fx:id="tc_inc1" minWidth="0.0" prefWidth="143.62158203125" text="Respuesta Incorrecta" />
+            <TableColumn fx:id="tc_inc2" minWidth="0.0" prefWidth="163.5689697265625" text="Respuesta Incorrecta" />
+            <TableColumn fx:id="tc_inc3" minWidth="0.0" prefWidth="172.54537756746493" text="Respuesta Incorrecta" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn_eliminar" mnemonicParsing="false" text="Eliminar" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btn_add" mnemonicParsing="false" text="Añadir" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</GridPane>

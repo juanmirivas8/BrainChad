@@ -14,7 +14,6 @@ import java.util.logging.Logger;
 public class UsuarioDAO extends DAOConnection {
 
     private static UsuarioDAO instance;
-    private static final Logger Log = Utils.getLogger();
     private UsuarioDAO(){
         super();
     }
@@ -36,14 +35,14 @@ public class UsuarioDAO extends DAOConnection {
             l.add(object.getNombre());
             l.add(object.getBornDate());
 
-            String query = "INSERT INTO USUARIO (NICKNAME, PASSWORD, SEXO, NOMBRE,FECHA_NACIMIENTO) VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO Usuario (nickname, password, sexo, nombre,fecha_nacimiento) VALUES (?,?,?,?,?)";
              res = SQL.execUpdate(query,l,true);
         }
         return res != -1;
     }
 
     public Usuario find (String user){
-        String query = "SELECT ID, NICKNAME, PASSWORD, SEXO, NOMBRE, MONEDA, PUNTUACION, FECHA_NACIMIENTO, FECHA_REGISTRO FROM USUARIO WHERE NICKNAME = ?";
+        String query = "SELECT id, nickname, password, sexo, nombre, moneda, puntuacion, fecha_nacimiento, fecha_registro FROM Usuario WHERE nickname = ?";
         List<Object> l = new ArrayList<>();
         l.add(user);
         ResultSet rs = SQL.execQuery(query,l);
@@ -61,7 +60,7 @@ public class UsuarioDAO extends DAOConnection {
     }
 
     public Usuario find (Integer id){
-        String query = "SELECT ID, NICKNAME, PASSWORD, SEXO, NOMBRE, MONEDA, PUNTUACION, FECHA_NACIMIENTO, FECHA_REGISTRO FROM USUARIO WHERE ID = ?";
+        String query = "SELECT ID, NICKNAME, PASSWORD, SEXO, NOMBRE, MONEDA, PUNTUACION, FECHA_NACIMIENTO, FECHA_REGISTRO FROM Usuario WHERE ID = ?";
         List<Object> l = new ArrayList<>();
         l.add(id);
         ResultSet rs = SQL.execQuery(query,l);
@@ -73,13 +72,13 @@ public class UsuarioDAO extends DAOConnection {
                         rs.getDouble("moneda"));
             }
         }catch (SQLException e){
-
+            Log.log(Level.SEVERE, Utils.exceptionInfo(e));
         }
         return null;
     }
     public Usuario identify(String user, String password){
-        String query = "SELECT ID, NICKNAME, PASSWORD, SEXO, NOMBRE, MONEDA, PUNTUACION, FECHA_NACIMIENTO, FECHA_REGISTRO " +
-                "FROM USUARIO WHERE NICKNAME = ? AND PASSWORD = ?";
+        String query = "SELECT id, nickname, password, sexo, nombre, moneda, puntuacion, fecha_nacimiento, fecha_registro " +
+                "FROM Usuario WHERE nickname = ? AND password = ?";
         List<Object> l = new ArrayList<>();
         l.add(user);
         l.add(password);
@@ -92,7 +91,7 @@ public class UsuarioDAO extends DAOConnection {
                          rs.getDouble("moneda"));
              }
          }catch (SQLException e){
-
+             Log.log(Level.SEVERE, Utils.exceptionInfo(e));
          }
         return null;
     }

@@ -66,6 +66,8 @@ public class LoginController extends Controller{
             Utils.closeRequest((Stage) pane.getScene().getWindow());
         });
 
+        Utils.addTextLimiter(tf_nickname,30);
+
     }
 
 }

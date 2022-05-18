@@ -1,0 +1,1 @@
+INSERT INTO Usuario (id, nickname, password, sexo, nombre, moneda, puntuacion, fecha_nacimiento, fecha_registro) VALUE (0,'system','04d3368f72736ed54c3cb63454eef23c2ecfb1deed27e2a4aa8e442e898fdbf51',true,'Administrative Account',0.0,0.0,CURRENT_DATE,CURRENT_DATE);

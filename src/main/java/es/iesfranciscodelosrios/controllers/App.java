@@ -21,7 +21,7 @@ public class App extends Application {
      * @param fxml view to load
      * @return null if error on controller or on fxml, otherwhise, the functional nodes of the window
      */
-    private static Parent loadFXML(String fxml) {
+    public static Parent loadFXML(String fxml) {
         Parent result;
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         try {

@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS Usuario(
     moneda DOUBLE NOT NULL DEFAULT 0.0,
     puntuacion DOUBLE NOT NULL DEFAULT 0.0,
     fecha_nacimiento DATE NOT NULL ,
-    fecha_registro DATE NOT NULL DEFAULT SYSDATE()
+    fecha_registro DATE NOT NULL DEFAULT (CURRENT_DATE)
 );
 CREATE TABLE IF NOT EXISTS Pregunta(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS Pregunta(
     respInc3 VARCHAR(100) NOT NULL ,
     imagen BLOB,
     categoria VARCHAR(20),
-    fecha_Creacion DATE NOT NULL DEFAULT SYSDATE(),
+    fecha_Creacion DATE NOT NULL DEFAULT (CURRENT_DATE),
     FOREIGN KEY (userID) REFERENCES Usuario(id) ON DELETE SET NULL
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Test(
     id INT PRIMARY KEY AUTO_INCREMENT,
     userID INT ,
     nombre VARCHAR(30),
-    fecha_Creacion DATE NOT NULL DEFAULT SYSDATE(),
+    fecha_Creacion DATE NOT NULL DEFAULT (CURRENT_DATE),
     FOREIGN KEY (userID) REFERENCES Usuario(id) ON DELETE CASCADE
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS Amistad(
     userID_B INT NOT NULL ,
     status BOOLEAN,
     fecha_Aceptacion DATE,
-    fecha_envio DATE DEFAULT SYSDATE(),
+    fecha_envio DATE DEFAULT (CURRENT_DATE),
     FOREIGN KEY (userID_A) REFERENCES Usuario(id) ON DELETE CASCADE ,
     FOREIGN KEY (userID_B) REFERENCES Usuario(id) ON DELETE CASCADE
     );
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS TestRespondido(
     id INT PRIMARY KEY AUTO_INCREMENT,
     userID INT NOT NULL,
     testID INT ,
-    fecha_Creacion DATE DEFAULT SYSDATE(),
+    fecha_Creacion DATE DEFAULT (CURRENT_DATE),
     FOREIGN KEY (userID) REFERENCES Usuario(id) ON DELETE CASCADE,
     FOREIGN KEY (testID) REFERENCES Test(id) ON DELETE SET NULL
 );
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS PreguntaRespondida(
     testID INT NOT NULL ,
     preguntaID INT NOT NULL ,
     respuesta VARCHAR(100) ,
-    fecha_Creacion DATE NOT NULL DEFAULT SYSDATE(),
+    fecha_Creacion DATE NOT NULL DEFAULT (CURRENT_DATE),
     FOREIGN KEY (userID) REFERENCES Usuario(id) ON DELETE CASCADE,
     FOREIGN KEY (testID) REFERENCES TestRespondido(id) ON DELETE CASCADE,
     FOREIGN KEY (preguntaID) REFERENCES Pregunta(id) ON DELETE CASCADE

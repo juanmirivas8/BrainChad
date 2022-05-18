@@ -1,6 +1,7 @@
 package es.iesfranciscodelosrios.model;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Usuario {
     private String nombre;
@@ -12,7 +13,7 @@ public class Usuario {
     private Date register_date;
     private Double puntuacion;
     private Double moneda;
-
+    public List<Pregunta> preguntas;
 
 
     public Usuario(String nombre, String nickname, String password, Date bornDate, Boolean sexo,

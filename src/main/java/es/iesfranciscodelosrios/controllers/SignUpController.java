@@ -89,5 +89,7 @@ public class SignUpController extends Controller{
                 }
             }
         });
+        Utils.addTextLimiter(tf_name,50);
+        Utils.addTextLimiter(tf_nickname,30);
     }
 }
