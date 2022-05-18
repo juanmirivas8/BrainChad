@@ -1,6 +1,7 @@
 package es.iesfranciscodelosrios.model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Pregunta {
 
@@ -13,7 +14,8 @@ public class Pregunta {
     private String rIn_3;
     private String imagen;
     private String categoria;
-    private Date fecha_creacion;
+    private LocalDateTime fecha_creacion;
+    private Usuario owner;
 
     public Pregunta(Integer id, Integer userId, String titulo, String rCorrecta,
                     String rIn_1, String rIn_2, String rIn_3, String categoria) {
@@ -25,6 +27,10 @@ public class Pregunta {
         this.rIn_2 = rIn_2;
         this.rIn_3 = rIn_3;
         this.categoria = categoria;
+    }
+
+    public Pregunta() {
+
     }
 
     public Integer getId() {
@@ -99,12 +105,20 @@ public class Pregunta {
         this.categoria = categoria;
     }
 
-    public Date getFecha_creacion() {
+    public LocalDateTime getFecha_creacion() {
         return fecha_creacion;
     }
 
-    public void setFecha_creacion(Date fecha_creacion) {
+    public void setFecha_creacion(LocalDateTime fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
+    }
+
+    public Usuario getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Usuario owner) {
+        this.owner = owner;
     }
 
     @Override

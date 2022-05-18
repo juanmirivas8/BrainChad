@@ -1,6 +1,6 @@
 package es.iesfranciscodelosrios.model;
 
-import com.mysql.cj.log.Log;
+
 import es.iesfranciscodelosrios.utils.SQL;
 import es.iesfranciscodelosrios.utils.Utils;
 
@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class UsuarioDAO extends DAOConnection {
 
@@ -21,6 +20,7 @@ public class UsuarioDAO extends DAOConnection {
     public static UsuarioDAO getInstance(){
         if( instance == null){
             instance = new UsuarioDAO();
+            users=instance;
         }
         return instance;
     }
@@ -48,10 +48,14 @@ public class UsuarioDAO extends DAOConnection {
         ResultSet rs = SQL.execQuery(query,l);
         try{
             while(rs.next()){
-                return new Usuario(rs.getString("nombre"),rs.getString("nickname"),
+                Usuario usuario = new Usuario(rs.getString("nombre"),rs.getString("nickname"),
                         rs.getString("password"),rs.getDate("fecha_nacimiento"),rs.getBoolean("sexo"),
-                        rs.getInt("id"),rs.getDate("fecha_registro"),rs.getDouble("puntuacion"),
+                        rs.getInt("id"),rs.getTimestamp("fecha_registro").toLocalDateTime(),rs.getDouble("puntuacion"),
                         rs.getDouble("moneda"));
+                List<Pregunta> pr = preguntas.getAll(usuario.getId());
+                pr.forEach(p ->p.setOwner(usuario));
+                usuario.setPreguntas(pr);
+                return usuario;
             }
         }catch (SQLException e){
             Log.log(Level.SEVERE, Utils.exceptionInfo(e));
@@ -66,10 +70,14 @@ public class UsuarioDAO extends DAOConnection {
         ResultSet rs = SQL.execQuery(query,l);
         try{
             while(rs.next()){
-                return new Usuario(rs.getString("nombre"),rs.getString("nickname"),
+                Usuario user = new Usuario(rs.getString("nombre"),rs.getString("nickname"),
                         rs.getString("password"),rs.getDate("fecha_nacimiento"),rs.getBoolean("sexo"),
-                        rs.getInt("id"),rs.getDate("fecha_registro"),rs.getDouble("puntuacion"),
+                        rs.getInt("id"),rs.getTimestamp("fecha_registro").toLocalDateTime(),rs.getDouble("puntuacion"),
                         rs.getDouble("moneda"));
+                List<Pregunta> pr = preguntas.getAll(user.getId());
+                pr.forEach(p ->p.setOwner(user));
+                user.setPreguntas(pr);
+                return user;
             }
         }catch (SQLException e){
             Log.log(Level.SEVERE, Utils.exceptionInfo(e));
@@ -85,10 +93,14 @@ public class UsuarioDAO extends DAOConnection {
         ResultSet rs = SQL.execQuery(query,l);
          try{
              while(rs.next()){
-                 return new Usuario(rs.getString("nombre"),rs.getString("nickname"),
+                 Usuario usuario = new Usuario(rs.getString("nombre"),rs.getString("nickname"),
                          rs.getString("password"),rs.getDate("fecha_nacimiento"),rs.getBoolean("sexo"),
-                         rs.getInt("id"),rs.getDate("fecha_registro"),rs.getDouble("puntuacion"),
+                         rs.getInt("id"),rs.getTimestamp("fecha_registro").toLocalDateTime(),rs.getDouble("puntuacion"),
                          rs.getDouble("moneda"));
+                 List<Pregunta> pr = preguntas.getAll(usuario.getId());
+                 pr.forEach(p ->p.setOwner(usuario));
+                 usuario.setPreguntas(pr);
+                 return usuario;
              }
          }catch (SQLException e){
              Log.log(Level.SEVERE, Utils.exceptionInfo(e));

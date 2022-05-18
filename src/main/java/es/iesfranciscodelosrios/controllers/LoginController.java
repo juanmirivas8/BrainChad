@@ -51,6 +51,7 @@ public class LoginController extends Controller{
                             "El usuario y/o la contraseña son incorrectas",Alert.AlertType.ERROR);
                 }else{
                     objects.add(user);
+                    Log.log(Level.INFO,"Usuario: "+user);
                     App.loadScene(new Stage(),"main","BrainChad",false,false);
                     App.closeScene((Stage) btn_login.getScene().getWindow());
                 }
