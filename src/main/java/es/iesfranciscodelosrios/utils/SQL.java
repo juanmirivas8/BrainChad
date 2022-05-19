@@ -44,6 +44,7 @@ public class SQL {
         if(cn == null){
             try {
                 DriverManager.setLoginTimeout(2);
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 cn = DriverManager.getConnection(info.getServer()+info.getDatabase(),info.getUser(), info.getPassword());
                 checkStructure(dbCreation);
                 Log.log(Level.INFO,"Base cargada correctamente "+ url);
@@ -52,6 +53,8 @@ public class SQL {
                 info = null;
                 instance = null;
                 Log.log(Level.SEVERE,Utils.exceptionInfo(e)+" - No pudo conectarse a la BBDD");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
         }
         return cn;
